@@ -47,6 +47,18 @@ bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[3~" delete-char
 
+# Functions for measuring time
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    RPROMPT="%{$fg_bold[blue]%}<%{$fg_bold[yellow]%}%?%{$fg_bold[blue]%}>%{$reset_color%} - %F{cyan}${timer_show}s%{$reset_color%}"
+    unset timer
+  fi
+}
 
 # Prompt settings (colors, etc.)
 if [[ $UID -eq 0 ]]; then
@@ -54,8 +66,11 @@ if [[ $UID -eq 0 ]]; then
 else
    PROMPT="%{$fg_bold[green]%}%n@%m %{$fg_bold[blue]%}%1~ %{$reset_color%}$ "
 fi
-RPROMPT="%{$fg_bold[blue]%}[%{$fg_bold[yellow]%}%?%{$fg_bold[blue]%}]%{$reset_color%}"
+RPROMPT=""
 
 # Some aliases
 alias ll="ls -l"
 alias grep="grep --color=always"
+
+# Enable syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
