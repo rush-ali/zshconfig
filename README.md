@@ -1,4 +1,4 @@
 # zshconfig
 My personal configuration of the ZSH shell
 
-Original version from alerighi, edited by Matteo Iervasi
+Original version from Alessandro Righi, edited by Matteo Iervasi
