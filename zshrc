@@ -2,7 +2,6 @@
 # Original config by alerighi4@gmail.com
 # Edited by matteoiervasi@gmail.com
 
-export EDITOR=vim
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESS=-R
@@ -14,7 +13,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;32m'
 export CLICOLOR=1
-export PATH="/opt/local/bin:$PATH"
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 autoload -U colors && colors
@@ -69,8 +67,10 @@ fi
 RPROMPT=""
 
 # Some aliases
-alias ll="ls -l"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 alias grep="grep --color=always"
 
 # Enable syntax highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
